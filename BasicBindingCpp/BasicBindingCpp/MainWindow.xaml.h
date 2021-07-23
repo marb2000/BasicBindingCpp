@@ -9,7 +9,7 @@
 
 namespace winrt::BasicBindingCpp::implementation
 {
-    struct MainWindow : MainWindowT<MainWindow>, Microsoft::UI::Xaml::Data::INotifyPropertyChanged
+    struct MainWindow : MainWindowT<MainWindow>
     {
         MainWindow();
     public:
