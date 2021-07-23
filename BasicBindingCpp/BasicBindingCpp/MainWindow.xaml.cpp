@@ -1,0 +1,32 @@
+﻿#include "pch.h"
+#include "MainWindow.xaml.h"
+#if __has_include("MainWindow.g.cpp")
+#include "MainWindow.g.cpp"
+#endif
+
+using namespace winrt;
+using namespace Microsoft::UI::Xaml;
+
+
+namespace winrt::BasicBindingCpp::implementation
+{
+    MainWindow::MainWindow()
+    {
+        InitializeComponent();
+    }
+
+    void MainWindow::MyValue(int32_t newValue) {
+        if (myValue != newValue) {
+            myValue = newValue;
+            propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"MyValue" });
+        }
+    }
+
+    winrt::event_token MainWindow::PropertyChanged(Microsoft::UI::Xaml::Data::PropertyChangedEventHandler const& handler) {
+        return propertyChanged.add(handler);
+    }
+
+    void MainWindow::PropertyChanged(winrt::event_token const& token) {
+        propertyChanged.remove(token);
+    }
+}

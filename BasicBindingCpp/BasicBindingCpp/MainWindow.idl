@@ -1,0 +1,9 @@
+namespace BasicBindingCpp
+{
+    [default_interface]
+    runtimeclass MainWindow : Microsoft.UI.Xaml.Window,  Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        MainWindow();
+        Int32 MyValue;
+    }
+}
